@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Route;
 // Index
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Login
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'authenticate'])->name('login');
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+
+// Dashboard
 
 // Pesantren
 Route::get('/pesantrens', [PesantrenController::class, 'index'])->name('pesantrens');

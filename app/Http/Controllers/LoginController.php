@@ -10,22 +10,24 @@ class LoginController extends Controller
 
     public function index()
     {
-        return 'Hello';
+        return view('pages.admin.login', [
+            'title' => 'Login'
+        ]);
     }
 
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
+            'email' => ['required', 'email:dns'],
             'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
-            return 'success';
-            // $request->session()->regenerate();
-            // return redirect()->intended('dashboard');
+            $request->session()->regenerate();
+            return Auth::user();
+            return redirect()->intended('pesantrens');
         }
         return 'failed';
-        // return back()->with('error', 'User not found');
+        return back()->with('error', 'User not found');
     }
 }
