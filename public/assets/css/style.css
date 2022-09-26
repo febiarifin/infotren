@@ -1,0 +1,58 @@
+.rounded{
+    border-radius: 5px !important;
+}
+
+.p-1{
+    padding: 10px !important;
+}
+
+.p-2{
+    padding: 20px !important;
+}
+
+.p-3{
+    padding: 30px !important;
+}
+
+.mt-1{
+    margin-top: 10px !important;
+}
+
+.mt-2{
+    margin-top: 20px !important;
+}
+
+.mt-3{
+    margin-top: 30px !important;
+}
+
+.mb-1{
+    margin-bottom: 10px !important;
+}
+
+.mb-2{
+    margin-bottom: 20px !important;
+}
+
+.mb-3{
+    margin-bottom: 10px !important;
+}
+
+.btn-logout{
+    color: #ffffff !important;
+}
+
+.btn-logout:hover{
+    background-color: #f56954 !important;
+}
+
+.card{
+    border: 1px solid rgb(209, 209, 209);
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+

@@ -16,13 +16,11 @@ class CreatePesantrensTable extends Migration
         Schema::create('pesantrens', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('pengasuh');
             $table->string('alamat');
             $table->integer('jarak');
-            $table->string('konsentrasi');
-            $table->string('jenjang');
-            $table->string('cp_pendaftaran');
+            $table->string('kontak');
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();

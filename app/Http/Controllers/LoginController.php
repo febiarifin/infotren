@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -24,10 +25,9 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return Auth::user();
             return redirect()->intended('pesantrens');
         }
-        return 'failed';
+        toast('User tidak ditemukan', 'error');
         return back()->with('error', 'User not found');
     }
 }

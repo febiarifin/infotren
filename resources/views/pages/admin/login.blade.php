@@ -9,6 +9,7 @@
             <p class="login-box-msg">Login untuk manajemen pesantren</p>
 
             <form action="{{ route('login') }}" method="post">
+                @csrf
                 <div class="form-group has-feedback @error('email') has-error @enderror">
                     <input type="email" class="form-control" placeholder="Email" name="email" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

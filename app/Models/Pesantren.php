@@ -17,7 +17,7 @@ class Pesantren extends Model
         'jarak',
         'konsentrasi',
         'jenjang',
-        'cp_pendaftaran',
+        'kontak',
         'instagram',
         'facebook',
         'youtube',
@@ -34,5 +34,15 @@ class Pesantren extends Model
     public function galeris()
     {
         return $this->hasMany(Galeri::class);
+    }
+
+    public function konsentrasis()
+    {
+        return $this->belongsToMany(Konsentrasi::class, 'konsentrasi_pesantren', 'pesantren_id', 'konsentrasi_id');
+    }
+
+    public function jenjangs()
+    {
+        return $this->belongsToMany(Jenjang::class, 'jenjang_pesantren', 'pesantren_id', 'jenjang_id');
     }
 }

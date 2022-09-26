@@ -17,9 +17,12 @@
         <!-- DataTables -->
         <link rel="stylesheet"
             href="{{ asset('admin-lte') }}/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-                               folder instead of downloading all of them to reduce the load. -->
+        <!-- AdminLTE Skins-->
         <link rel="stylesheet" href="{{ asset('admin-lte') }}/dist/css/skins/_all-skins.min.css">
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+        {{-- My Css --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     @else
     @endauth
     <!-- Theme style -->
@@ -29,11 +32,24 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition @auth skin-blue sidebar-mini @else login-page @endauth">
+<body class="hold-transition @auth fixed skin-blue sidebar-mini @else login-page @endauth">
+    @include('sweetalert::alert')
 
     @auth
         <div class="wrapper">
-            @yield('content')
+            @include('partials.sidebar')
+
+            <div class="content-wrapper">
+                @yield('content')
+            </div>
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.4.18
+                </div>
+                <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+                reserved.
+            </footer>
         </div>
     @else
         @yield('content')
@@ -53,8 +69,8 @@
         <script src="{{ asset('admin-lte') }}/bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset('admin-lte') }}/dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{ asset('admin-lte') }}/dist/js/demo.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="{{ asset('admin-lte') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
         <!-- page script -->
         <script>
             $(function() {
@@ -68,8 +84,16 @@
                     'autoWidth': false
                 })
             })
+
+            $('.textarea').wysihtml5()
         </script>
+
+        @if ($active == 'pesantrens')
+            <script src="{{ asset('assets/js/pesantrens.js') }}"></script>
+        @endif
+
     @endauth
+
 </body>
 
 </html>
