@@ -29,6 +29,7 @@ class Pesantren extends Model
         'jumlah_santri_pi',
         'image',
         'content',
+        'maps_url',
     ];
 
     public function galeris()

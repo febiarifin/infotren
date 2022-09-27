@@ -32,6 +32,7 @@ class CreatePesantrensTable extends Migration
             $table->integer('jumlah_santri_pi')->nullable();
             $table->string('image');
             $table->text('content');
+            $table->text('maps_url');
             $table->timestamps();
         });
     }

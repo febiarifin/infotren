@@ -10,6 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class KonsentrasiCotroller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function store(Request $request)
     {
@@ -42,6 +46,10 @@ class KonsentrasiCotroller extends Controller
     public function delete(Request $request)
     {
         $konsentrasi = Konsentrasi::findOrFail($request->id);
+        if (count($konsentrasi->pesantrens) != 0) {
+            toast('Konsentrasi gagal dihapus', 'error');
+            return back();
+        }
         $konsentrasi->delete();
         toast('Konsentrasi berhasil dihapus', 'success');
         return back();

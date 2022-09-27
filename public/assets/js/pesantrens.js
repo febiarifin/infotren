@@ -5,21 +5,23 @@ const qtySantriPa = document.getElementById('qty-pa');
 const qtySantriPi = document.getElementById('qty-pi');
 
 const choseType = () =>{
-    if (typePesantren.value == 'pa_pi') {
-        boxPa.style.display ='block';
-        boxPi.style.display ='block';
-        qtySantriPa.required =true;
-        qtySantriPi.required =true;
-    }else if(typePesantren.value == 'pa'){
-        boxPa.style.display ='block';
-        boxPi.style.display ='none';
-        qtySantriPa.required =true;
-        qtySantriPi.required =false;
-    }else if(typePesantren.value == 'pi'){
-        boxPi.style.display ='block';
-        boxPa.style.display ='none';
-        qtySantriPi.required =true;
-        qtySantriPa.required =false;
+    if (typePesantren) {
+        if (typePesantren.value == 'pa_pi') {
+            boxPa.style.display ='block';
+            boxPi.style.display ='block';
+            qtySantriPa.required =true;
+            qtySantriPi.required =true;
+        }else if(typePesantren.value == 'pa'){
+            boxPa.style.display ='block';
+            boxPi.style.display ='none';
+            qtySantriPa.required =true;
+            qtySantriPi.required =false;
+        }else if(typePesantren.value == 'pi'){
+            boxPi.style.display ='block';
+            boxPa.style.display ='none';
+            qtySantriPi.required =true;
+            qtySantriPa.required =false;
+        }
     }
 }
 

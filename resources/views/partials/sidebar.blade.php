@@ -35,7 +35,7 @@
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <a href="#" class="btn btn-danger btn-logout">Logout <i
+                            <a href="{{ route('logout') }}" class="btn btn-danger btn-logout">Logout <i
                                     class="fa  fa-sign-out"></i></a>
                         </li>
                     </ul>
@@ -63,7 +63,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="{{ $active == 'dashboard' ? 'active' : '' }}">
-                <a href="#">
+                <a href="{{ route('dashboard') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>

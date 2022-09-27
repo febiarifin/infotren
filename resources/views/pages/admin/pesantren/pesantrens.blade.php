@@ -27,7 +27,7 @@
                             </a>
                         </div>
                     </div>
-                    <!-- /.box-header -->
+
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -51,9 +51,20 @@
                                         <td>{{ $pesantren->alamat }}</td>
                                         <td>
                                             <div class="d-flex">
+                                                <a href="{{ route('pesantren.preview', ['pesantren' => $pesantren->id]) }}"
+                                                    class="btn btn-success btn-sm mr-1"><i class="fa fa-eye"></i>
+                                                    Preview</a>
                                                 <a href="{{ route('pesantren.edit', ['pesantren' => $pesantren->id]) }}"
-                                                    class="btn btn-primary btn-sm"><i class="fa fa-pencil-square"></i>
+                                                    class="btn btn-primary btn-sm mr-1"><i class="fa fa-pencil-square"></i>
                                                     Edit</a>
+                                                <form action="{{ route('pesantren.delete') }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $pesantren->id }}">
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"
+                                                        data-toggle="tooltip" title='Delete'>
+                                                        <i class="fa fa-trash"></i> Hapus
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -70,13 +81,8 @@
                             </tfoot>
                         </table>
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </section>
-    <!-- /.content -->
 @endsection

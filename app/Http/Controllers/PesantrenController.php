@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Models\Galeri;
 use App\Models\Jenjang;
 use App\Models\Konsentrasi;
 use App\Models\Pesantren;
@@ -12,6 +13,10 @@ use Illuminate\Validation\Rule;
 
 class PesantrenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -64,6 +69,7 @@ class PesantrenController extends Controller
         $validatedData['facebook'] = $request->facebook;
         $validatedData['youtube'] = $request->youtube;
         $validatedData['website'] = $request->website;
+        $validatedData['maps_url'] = $request->maps_url;
         $validatedData['image'] = AppHelper::instance()->uploadImage($request->image, 'images');
         $pesantren = Pesantren::create($validatedData);
         $pesantren->konsentrasis()->attach($request->konsentrasi);
@@ -121,6 +127,7 @@ class PesantrenController extends Controller
         $validatedData['facebook'] = $request->facebook;
         $validatedData['youtube'] = $request->youtube;
         $validatedData['website'] = $request->website;
+        $validatedData['maps_url'] = $request->maps_url;
         if ($request->image) {
             AppHelper::instance()->deleteImage($pesantren->image);
             $validatedData['image'] = AppHelper::instance()->uploadImage($request->image, 'images');
@@ -132,11 +139,51 @@ class PesantrenController extends Controller
         return redirect('pesantrens');
     }
 
+    public function preview($pesantren)
+    {
+        $pesantren = Pesantren::findOrFail($pesantren);
+        return view('pages.admin.pesantren.preview', [
+            'title' => $pesantren->nama,
+            'active' => 'pesantrens',
+            'pesantren' => $pesantren,
+        ]);
+    }
+
     public function delete(Request $request)
     {
         $pesantren = Pesantren::findOrFail($request->id);
         AppHelper::instance()->deleteImage($pesantren->image);
+        foreach ($pesantren->galeris as $galeri) {
+            AppHelper::instance()->deleteImage($galeri->image);
+        }
+        $pesantren->galeris->each->delete();
         $pesantren->delete();
-        return 'pesantren has been deleted';
+        toast('Pesantren berhasil dihapus', 'success');
+        return back();
+    }
+
+    public function galeriStore(Request $request)
+    {
+        $pesantren = Pesantren::findOrFail($request->id);
+        $validatedData = $request->validate([
+            'galeri' => ['required', 'array', 'max:1024'],
+        ]);
+        foreach ($validatedData['galeri'] as $galeriImage) {
+            $galeri = new Galeri;
+            $galeri->image = AppHelper::instance()->uploadImage($galeriImage, 'images');
+            $galeri->pesantren_id = $pesantren->id;
+            $pesantren->galeris()->save($galeri);
+        }
+        toast('Galeri berhasil ditambahkan', 'success');
+        return back();
+    }
+
+    public function galeriDelete(Request $request)
+    {
+        $galeri = Galeri::findOrFail($request->id);
+        AppHelper::instance()->deleteImage($galeri->image);
+        $galeri->delete();
+        toast('Galeri berhasil dihapus', 'success');
+        return back();
     }
 }

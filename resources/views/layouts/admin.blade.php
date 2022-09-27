@@ -71,6 +71,8 @@
         <script src="{{ asset('admin-lte') }}/dist/js/adminlte.min.js"></script>
         <!-- Bootstrap WYSIHTML5 -->
         <script src="{{ asset('admin-lte') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <!-- SweetAlert 2-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
         <!-- page script -->
         <script>
             $(function() {
@@ -86,6 +88,28 @@
             })
 
             $('.textarea').wysihtml5()
+
+            const confirmDelete = () => {
+
+            }
+
+            $('.show_confirm').click(function(event) {
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                swal({
+                        title: `Are you sure you want to delete this record?`,
+                        text: "If you delete this, it will be gone forever.",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        }
+                    });
+            });
         </script>
 
         @if ($active == 'pesantrens')

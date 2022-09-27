@@ -46,13 +46,29 @@
                                 </div>
                             </div>
 
-                            <div class="form-group @error('alamat') has-error @enderror">
-                                <label class="control-label" for="inputError">Alamat Pesantren</label>
-                                <input type="test" class="form-control" id="inputError" value="{{ $pesantren->alamat }}"
-                                    placeholder="Alamat Pesantren" name="alamat" required>
-                                @error('alamat')
-                                    <span class="help-block">{{ $message }}</span>
-                                @enderror
+                            <div class="row">
+                                <div class="form-group col-md-6 @error('alamat') has-error @enderror">
+                                    <label class="control-label" for="inputError">Alamat Pesantren</label>
+                                    <input type="test" class="form-control" id="inputError"
+                                        value="{{ $pesantren->alamat }}" placeholder="Alamat Pesantren" name="alamat"
+                                        required>
+                                    @error('alamat')
+                                        <span class="help-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-md-6 @error('maps_url') has-error @enderror">
+                                    <label class="control-label" for="inputError">Url Google Maps <a href="#"
+                                            type="button" data-toggle="modal" data-target="#modal-help">
+                                            <i class="fa fa-info-circle"></i> Petunjuk
+                                        </a></label>
+                                    <input type="link" class="form-control" id="inputError"
+                                        value="{{ $pesantren->maps_url }}"
+                                        placeholder="https://goo.gl/maps/bLvbxs2m7crFn9XP7" name="maps_url">
+                                    @error('maps_url')
+                                        <span class="help-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="row">
@@ -206,7 +222,7 @@
 
                             <div class="form-group bg-gray rounded mt-2 p-1">
                                 <label class="control-label" for="inputError">Konten</label>
-                                <textarea class="textarea form-control" placeholder="Place some text here" name="content" required>{{ $pesantren->content }}</textarea>
+                                <textarea class="textarea form-control" rows="20" placeholder="Place some text here" name="content" required>{{ $pesantren->content }}</textarea>
                             </div>
 
                         </div>
@@ -220,4 +236,40 @@
             </div>
         </div>
     </section>
+
+    {{-- Modal Help --}}
+    <div class="modal fade" id="modal-help">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Tambahkan Galeri</h4>
+                </div>
+                <div class="modal-body">
+
+                    <ol>
+                        <li>Cari Alamat Pada Google Maps</li>
+                        <li>Klik icon Bagikan</li>
+                        <div class="card rounded bg-dark p-2">
+                            <img src="{{ asset('assets/img/help-1.png') }}" alt="Help 1" class="image-responsive">
+                        </div>
+                        <li>Klik Salin Html</li>
+                        <div class="card rounded bg-dark p-2">
+                            <img src="{{ asset('assets/img/help-2.png') }}" alt="Help 1" class="image-responsive">
+                        </div>
+                        <li>Kemudian akan mendapatkan hasil seperti berikut : </li>
+                        <div class="card rounded bg-dark p-2">
+                            <img src="{{ asset('assets/img/help-3.png') }}" alt="Help 1" class="image-responsive">
+                        </div>
+                        <li>Kemudian ambil dibagian src, maka akan menjadi seperti berikut : </li>
+                        <div class="card rounded bg-dark p-2">
+                            <img src="{{ asset('assets/img/help-4.png') }}" alt="Help 1" class="image-responsive">
+                        </div>
+                        <li>Kemudian inputkan di field Url Google Maps</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

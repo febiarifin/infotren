@@ -1,0 +1,196 @@
+@extends('layouts.admin')
+
+@section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{ $title }}
+            <small>Detail Pesantren</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Pesantren</a></li>
+            <li class="active">{{ $title }}</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="p-2">
+                            <img src="{{ asset($pesantren->image) }}" alt="{{ $pesantren->nama }}" class="image-responsive">
+                            <div class="mt-2 text-justify">
+                                {!! nl2br($pesantren->content) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Detail</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row mb-1">
+                            <div class="col-md-4">Nama Pesantren</div>
+                            <div class="col-md-8"><b>{{ $pesantren->nama }}</b></div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Pengasuh</div>
+                            <div class="col-md-8"><b>{{ $pesantren->pengasuh }}</b></div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Alamat</div>
+                            <div class="col-md-8"><b>{{ $pesantren->alamat }}</b></div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Jarak</div>
+                            <div class="col-md-8"><b>{{ $pesantren->jarak }}</b></div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Konsentrasi</div>
+                            <div class="col-md-8">
+                                @foreach ($pesantren->konsentrasis as $konsentrasi)
+                                    <input type="checkbox" checked> {{ $konsentrasi->name }} <br>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Jenjang Santri</div>
+                            <div class="col-md-8">
+                                @foreach ($pesantren->jenjangs as $jenjang)
+                                    <span class="badge bg-primary">{{ $jenjang->name }}</span>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Kontak</div>
+                            <div class="col-md-8"><b>{{ $pesantren->kontak }}</b></div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-4">Putra/Putri</div>
+                            <div class="col-md-8">
+                                <b>
+                                    @if ($pesantren->pa_pi == 'pa_pi')
+                                        Putra/Putri
+                                    @elseif ($pesantren->pa_pi == 'pa')
+                                        Putra
+                                    @elseif ($pesantren->pa_pi == 'pi')
+                                        Putri
+                                    @endif
+                                </b>
+                            </div>
+                        </div>
+                        @if ($pesantren->pa_pi == 'pa_pi')
+                            <div class="row mb-1">
+                                <div class="col-md-4">Jumlah Santri Putra</div>
+                                <div class="col-md-8"><b>{{ $pesantren->jumlah_santri_pa }}</b></div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-md-4">Jumlah Santri Putri</div>
+                                <div class="col-md-8"><b>{{ $pesantren->jumlah_santri_pi }}</b></div>
+                            </div>
+                        @elseif ($pesantren->pa_pi == 'pa')
+                            <div class="row mb-1">
+                                <div class="col-md-4">Jumlah Santri Putra</div>
+                                <div class="col-md-8"><b>{{ $pesantren->jumlah_santri_pa }}</b></div>
+                            </div>
+                        @elseif ($pesantren->pa_pi == 'pi')
+                            <div class="row mb-1">
+                                <div class="col-md-4">Jumlah Santri Putri</div>
+                                <div class="col-md-8"><b>{{ $pesantren->jumlah_santri_pi }}</b></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-header">Media Sosial</div>
+                    <div class="box-body p-2">
+                        <a href="{{ $pesantren->facebook }}" class="btn btn-block btn-social btn-facebook" target="blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                        <a href="{{ $pesantren->instagram }}" class="btn btn-block btn-social btn-foursquare"
+                            target="blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                        <a href="{{ $pesantren->youtube }}" class="btn btn-block btn-social btn-danger" target="blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                        <a href="{{ $pesantren->website }}" class="btn btn-block btn-social btn-github" target="blank">
+                            <i class="fa fa-globe"></i> Website
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="box">
+                    <div class="box-header">Galeri</div>
+                    <div class="box-body p-2">
+                        <button type="button" class="btn btn-primary col-md-12 mb-2" data-toggle="modal"
+                            data-target="#modal-galeri">
+                            <i class="fa fa-plus"></i> Tambahkan Galeri
+                        </button>
+                        <div>
+                            @foreach ($pesantren->galeris as $galeri)
+                                <img src="{{ asset($galeri->image) }}" alt="Galeri {{ $pesantren->nama }}"
+                                    class="image-square">
+                                <div onclick="confirmDelete()">
+                                    <form action="{{ route('pesantren.galeri.delete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $galeri->id }}">
+                                        <button type="submit" class="btn btn-danger btn-sm col-md-12 mb-1 show_confirm"
+                                            data-toggle="tooltip" title='Delete'><i class="fa fa-trash"></i> Hapus
+                                            Galeri</button>
+                                    </form>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <iframe src="{!! $pesantren->maps_url !!}" class="box-maps" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Modal Add Galeri --}}
+    <div class="modal fade" id="modal-galeri">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('pesantren.galeri.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $pesantren->id }}">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Tambahkan Galeri</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputFile">Gambar Thumbnail</label>
+                        <input type="file" name="galeri[]" id="galeri" multiple>
+
+                        <p class="help-block">
+                            <small>Maksimal <b>500Kb</b>, Format file <b>jpg, jpeg, png</b></small>
+                        </p>
+                        @error('galeri')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -25,7 +25,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('pesantrens');
+            return redirect()->intended('dashboard');
         }
         toast('User tidak ditemukan', 'error');
         return back()->with('error', 'User not found');
