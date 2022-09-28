@@ -246,7 +246,10 @@
                         <h4 class="modal-title">Import Rincian Biaya</h4>
                     </div>
                     <div class="modal-body">
-                        <label for="exampleInputFile">Choose File</label>
+                        <label for="exampleInputFile">Choose File <a href="#" type="button" data-toggle="modal"
+                                data-target="#modal-help">
+                                <i class="fa fa-info-circle"></i> Petunjuk
+                            </a></label>
                         <input type="file" name="biaya" id="biaya" required>
 
                         <p class="help-block">
@@ -260,6 +263,32 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Help --}}
+    <div class="modal fade" id="modal-help">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Tambahkan Galeri</h4>
+                </div>
+                <div class="modal-body">
+
+                    <ol>
+                        <li>Siapkan file csv / xlsx</li>
+                        <li>Pastikan format document memiliki field <b>description</b> berisi keterangan biaya dan field
+                            <b>value</b> berisi nominal biaya yang harus dibayarkan, contoh seperti gambar dibawah ini :
+                        </li>
+                        <div class="card rounded bg-dark p-2">
+                            <img src="{{ asset('assets/img/help-5.png') }}" alt="Help 5" class="image-responsive">
+                        </div>
+                        <li>Kemudian klik submit</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
