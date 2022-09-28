@@ -54,12 +54,20 @@
                             <div class="col-md-8">
                                 <h4>Laravel 8</h4>
                                 <h4>Admin LTE 2</h4>
-                                <h4>Bootstrap</h4>
+                                <h4>Bootstrap 5</h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <h4>Universitas</h4>
+                                <h4>TIM</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <h4>ITQ</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>Kampus</h4>
                             </div>
                             <div class="col-md-8">
                                 <h4>Universitas Sains Al-Qur'an</h4>

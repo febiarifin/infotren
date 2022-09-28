@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AppHelper;
+use App\Imports\BiayasImport;
+use App\Models\Biaya;
 use App\Models\Galeri;
 use App\Models\Jenjang;
 use App\Models\Konsentrasi;
@@ -10,6 +12,7 @@ use App\Models\Pesantren;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesantrenController extends Controller
 {
@@ -146,6 +149,7 @@ class PesantrenController extends Controller
             'title' => $pesantren->nama,
             'active' => 'pesantrens',
             'pesantren' => $pesantren,
+            'biayas' => $pesantren->biayas,
         ]);
     }
 
@@ -184,6 +188,25 @@ class PesantrenController extends Controller
         AppHelper::instance()->deleteImage($galeri->image);
         $galeri->delete();
         toast('Galeri berhasil dihapus', 'success');
+        return back();
+    }
+
+    public function biayaImport(Request $request)
+    {
+        $pesantren = Pesantren::findOrFail($request->id);
+        $request->validate([
+            'biaya' => ['required', 'mimes:xlsx, csv'],
+        ]);
+        Excel::import(new BiayasImport($pesantren->id), $request->file('biaya'));
+        toast('Import rincian biaya berhasil', 'success');
+        return back();
+    }
+
+    public function biayaDelete(Request $request)
+    {
+        $biaya = Biaya::findOrFail($request->id);
+        $biaya->delete();
+        toast('Rincian biaya berhasil dihapus', 'success');
         return back();
     }
 }

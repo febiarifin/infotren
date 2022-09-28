@@ -55,7 +55,7 @@
                             <div class="col-md-4">Konsentrasi</div>
                             <div class="col-md-8">
                                 @foreach ($pesantren->konsentrasis as $konsentrasi)
-                                    <input type="checkbox" checked> {{ $konsentrasi->name }} <br>
+                                    <input type="checkbox" checked disabled> {{ $konsentrasi->name }} <br>
                                 @endforeach
                             </div>
                         </div>
@@ -127,6 +127,45 @@
                     </div>
                 </div>
 
+                <div class="box">
+                    <div class="box-header">Rincian Biaya</div>
+                    <div class="box-body p-2">
+                        <button type="button" class="btn btn-primary col-md-12 mb-2" data-toggle="modal"
+                            data-target="#modal-import">
+                            <i class="fa fa-upload"></i> Import Rincian Biaya
+                        </button>
+                        <div class="mt-2">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Keterangan</th>
+                                    <th>Biaya</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($pesantren->biayas as $biaya)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $biaya->description }}</td>
+                                        <td>{{ $biaya->value }}</td>
+                                        <td>
+                                            <form action="{{ route('pesantren.biaya.delete') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $biaya->id }}">
+                                                <button type="submit"
+                                                    class="btn btn-danger btn-sm col-md-12 mb-1 show_confirm"
+                                                    data-toggle="tooltip" title='Delete'><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="box">
                     <div class="box-header">Galeri</div>
@@ -176,11 +215,42 @@
                         <h4 class="modal-title">Tambahkan Galeri</h4>
                     </div>
                     <div class="modal-body">
-                        <label for="exampleInputFile">Gambar Thumbnail</label>
+                        <label for="exampleInputFile">Choose Image</label>
                         <input type="file" name="galeri[]" id="galeri" multiple>
 
                         <p class="help-block">
                             <small>Maksimal <b>500Kb</b>, Format file <b>jpg, jpeg, png</b></small>
+                        </p>
+                        @error('galeri')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Import --}}
+    <div class="modal fade" id="modal-import">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('pesantren.biaya.import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $pesantren->id }}">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Import Rincian Biaya</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputFile">Choose File</label>
+                        <input type="file" name="biaya" id="biaya" required>
+
+                        <p class="help-block">
+                            <small>Format file <b>csv / xlsx</b></small>
                         </p>
                         @error('galeri')
                             <small class="text-danger">{{ $message }}</small>

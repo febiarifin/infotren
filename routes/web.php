@@ -32,6 +32,8 @@ Route::get('/pesantren/edit/{pesantren}', [PesantrenController::class, 'edit'])-
 Route::get('/pesantren/preview/{pesantren}', [PesantrenController::class, 'preview'])->name('pesantren.preview');
 Route::post('/pesantren/galeri/store', [PesantrenController::class, 'galeriStore'])->name('pesantren.galeri.store');
 Route::post('/pesantren/galeri/delete', [PesantrenController::class, 'galeriDelete'])->name('pesantren.galeri.delete');
+Route::post('/pesantren/biaya/import', [PesantrenController::class, 'biayaImport'])->name('pesantren.biaya.import');
+Route::post('/pesantren/biaya/delete', [PesantrenController::class, 'biayaDelete'])->name('pesantren.biaya.delete');
 
 // Konsentrasi
 Route::post('/konsentrasi/store', [KonsentrasiCotroller::class, 'store'])->name('konsentrasi.store');

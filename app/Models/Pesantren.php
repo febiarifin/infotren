@@ -46,4 +46,9 @@ class Pesantren extends Model
     {
         return $this->belongsToMany(Jenjang::class, 'jenjang_pesantren', 'pesantren_id', 'jenjang_id');
     }
+
+    public function biayas()
+    {
+        return $this->hasMany(Biaya::class);
+    }
 }
