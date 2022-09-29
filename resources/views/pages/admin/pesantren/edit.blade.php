@@ -145,31 +145,30 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6 ">
-                                    <label class="control-label" for="inputError">Link Instagram</label>
-                                    <input type="link" class="form-control" id="inputError"
-                                        placeholder="https://instagram.com/" name="instagram"
+                                    <label class="control-label" for="inputError">Instagram</label>
+                                    <input type="text" class="form-control" id="inputError"
+                                        placeholder="Username Instagram" name="instagram"
                                         value="{{ $pesantren->instagram }}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="inputError">Link Facebook</label>
-                                    <input type="link" class="form-control" id="inputError"
-                                        placeholder="https://facebook.com/" name="facebook"
+                                    <label class="control-label" for="inputError">Facebook</label>
+                                    <input type="text" class="form-control" id="inputError"
+                                        placeholder="Username Facebook" name="facebook"
                                         value="{{ $pesantren->facebook }}">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="inputError">Link Youtube</label>
-                                    <input type="link" class="form-control" id="inputError"
-                                        placeholder="https://youtube.com/" name="youtube"
-                                        value="{{ $pesantren->youtube }}">
+                                    <label class="control-label" for="inputError">Youtube</label>
+                                    <input type="text" class="form-control" id="inputError"
+                                        placeholder="Channel Youtube" name="youtube" value="{{ $pesantren->youtube }}">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label class="control-label" for="inputError">Link Website</label>
-                                    <input type="link" class="form-control" id="inputError"
+                                    <input type="url" class="form-control" id="inputError"
                                         placeholder="https://website.com/" name="website"
                                         value="{{ $pesantren->website }}">
                                 </div>

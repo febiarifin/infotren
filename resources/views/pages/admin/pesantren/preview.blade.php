@@ -111,18 +111,17 @@
                 <div class="box">
                     <div class="box-header">Media Sosial</div>
                     <div class="box-body p-2">
-                        <a href="{{ $pesantren->facebook }}" class="btn btn-block btn-social btn-facebook" target="blank">
-                            <i class="fa fa-facebook"></i> Facebook
+                        <a href="#" class="btn btn-block btn-social btn-facebook">
+                            <i class="fa fa-facebook"></i> {{ $pesantren->facebook }}
                         </a>
-                        <a href="{{ $pesantren->instagram }}" class="btn btn-block btn-social btn-foursquare"
-                            target="blank">
-                            <i class="fa fa-instagram"></i> Instagram
+                        <a href="#" class="btn btn-block btn-social btn-foursquare">
+                            <i class="fa fa-instagram"></i> {{ $pesantren->instagram }}
                         </a>
-                        <a href="{{ $pesantren->youtube }}" class="btn btn-block btn-social btn-danger" target="blank">
-                            <i class="fa fa-youtube"></i> Youtube
+                        <a href="#" class="btn btn-block btn-social btn-danger">
+                            <i class="fa fa-youtube"></i> {{ $pesantren->youtube }}
                         </a>
                         <a href="{{ $pesantren->website }}" class="btn btn-block btn-social btn-github" target="blank">
-                            <i class="fa fa-globe"></i> Website
+                            <i class="fa fa-globe"></i> {{ $pesantren->nama }}
                         </a>
                     </div>
                 </div>

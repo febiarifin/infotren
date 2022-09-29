@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <!-- My Css -->
+    <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar bg-white shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <!-- <img
+                        src="/docs/5.2/assets/brand/bootstrap-logo.svg"
+                        alt="Bootstrap"
+                        width="30"
+                        height="24"
+                    /> -->
+                INFOTREN
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="container p-5">
+        <h1 class="text-header text-primary" id="typing-text"></h1>
+        <p class="text-secondary fs-5 mt-5 text-description">
+            Sistem Informasi Pondok Pesantren (INFOTREN) adalah sebuah
+            website yang menyediakan informasi mengenai pondok pesantren,
+            informasi meliputi indentitas lengkap pondok pesantren, alamat
+            pondok pesantren, jarak pondok pesantren dari kampus Universitas
+            Sains Al-Qur'an, biaya pendidikan pondok pesantren, konsentrasi
+            pondok pesantren, jenjang pondok pesantren.
+        </p>
+        <a href="#content" class="btn btn-outline-primary rounded-pill mt-5 btn-search shadow"><i
+                class="bi bi-search"></i>
+            Temukan Pesantren</a>
+    </div>
+
+    <!-- Content -->
+    <div class="container mt-5 content" id="content">
+        <div class="row">
+            <!-- Navigation FIlter -->
+
+            <!-- Popularitas -->
+            <div class="col-md-3">
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-6 fw-bold text-secondary">
+                                Popularitas
+                            </p>
+                            <hr />
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill col-md-12">Tampilkan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jarak -->
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-6 fw-bold text-secondary">
+                                Jarak Terdekat
+                            </p>
+                            <hr />
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill col-md-12">Tampilkan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biaya -->
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-6 fw-bold text-secondary">
+                                Biaya Pendidikan
+                            </p>
+                            <hr />
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill col-md-12 mb-1">Termurah</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill col-md-12 mb-1">Termahal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Konsentrasi -->
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-6 fw-bold text-secondary">
+                                konsentrasi
+                            </p>
+                            <hr />
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">konsentrasi</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">konsentrasi</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">konsentrasi</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">konsentrasi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jenjang -->
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <div>
+                            <p class="fs-6 fw-bold text-secondary">
+                                Jenjang
+                            </p>
+                            <hr />
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                            <a href="" class="btn btn-outline-primary btn-sm rounded-pill mb-1">Jenjang</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pesantren List -->
+            <div class="col-md-9 content-pesantren">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="mt-3">
+                            <form action="" method="post">
+                                <input type="search" class="form-control rounded-pill shadow"
+                                    placeholder="Masukkan kata kunci pencarian..." />
+                            </form>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="row list-pesantrens">
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="detail.html"
+                                                class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="#" class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="#" class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="#" class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="#" class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pesantren Card -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card card-pesantren" style="width: 14rem">
+                                        <img src="../assets/img/thumbnail.png" class="card-img-top" alt="Thumbnail"
+                                            height="220" />
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">
+                                                Pondok Pesantren
+                                            </h6>
+                                            <p class="card-text text-secondary">
+                                                <small><b>Pengasuh</b> <br />
+                                                    Pengasuh</small>
+                                                <br>
+                                                <small> <b>Jarak</b> <br />
+                                                    <i class="bi bi-plus-slash-minus"></i> 700 m</small>
+                                                <br>
+                                                <small> <b>Penerimaan</b> <br />
+                                                    Putra / Putri</small>
+                                            </p>
+                                            <a href="#" class="btn btn-outline-primary btn-sm col-md-12">Detail
+                                                <i class="bi bi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-5 mb-5">
+        <div class="d-flex justify-content-center mt-5">Copyright &copy ITQ Universitas Sains Al-Qur'an</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- My Js -->
+    <script src="../assets/js/index.js"></script>
+</body>
+
+</html>

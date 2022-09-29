@@ -1,0 +1,46 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+.navbar{
+    height: 70px !important;
+}
+
+.navbar-brand{
+    margin-left: 30px !important;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+@media(min-width:1000px){
+    .text-header{
+        margin-top: 30px;
+    }
+    .content{
+        margin-top: 130px !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .text-description{
+        font-size: 10pt !important;
+        margin-top: 10px !important;
+    }
+    .btn-search{
+        margin-top: 10px !important;
+    }
+    .content{
+        padding: 5px !important;
+    }
+    .content-pesantren{
+        margin-top: 20px !important;
+    }
+    .card-pesantren{
+        width: 17rem !important;
+    }
+    .card-maps{
+        width: 294px !important;
+    }
+.text-footer{
+    font-size: 10pt !important;
+}
+}
