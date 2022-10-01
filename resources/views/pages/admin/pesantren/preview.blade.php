@@ -111,18 +111,26 @@
                 <div class="box">
                     <div class="box-header">Media Sosial</div>
                     <div class="box-body p-2">
-                        <a href="#" class="btn btn-block btn-social btn-facebook">
-                            <i class="fa fa-facebook"></i> {{ $pesantren->facebook }}
-                        </a>
-                        <a href="#" class="btn btn-block btn-social btn-foursquare">
-                            <i class="fa fa-instagram"></i> {{ $pesantren->instagram }}
-                        </a>
-                        <a href="#" class="btn btn-block btn-social btn-danger">
-                            <i class="fa fa-youtube"></i> {{ $pesantren->youtube }}
-                        </a>
-                        <a href="{{ $pesantren->website }}" class="btn btn-block btn-social btn-github" target="blank">
-                            <i class="fa fa-globe"></i> {{ $pesantren->nama }}
-                        </a>
+                        @if ($pesantren->facebook)
+                            <a href="#" class="btn btn-block btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> {{ $pesantren->facebook }}
+                            </a>
+                        @endif
+                        @if ($pesantren->instagram)
+                            <a href="#" class="btn btn-block btn-social btn-foursquare">
+                                <i class="fa fa-instagram"></i> {{ $pesantren->instagram }}
+                            </a>
+                        @endif
+                        @if ($pesantren->youtube)
+                            <a href="#" class="btn btn-block btn-social btn-danger">
+                                <i class="fa fa-youtube"></i> {{ $pesantren->youtube }}
+                            </a>
+                        @endif
+                        @if ($pesantren->youtube)
+                            <a href="{{ $pesantren->website }}" class="btn btn-block btn-social btn-github" target="blank">
+                                <i class="fa fa-globe"></i> {{ $pesantren->nama }}
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -143,12 +151,16 @@
                                 </tr>
                                 @php
                                     $no = 1;
+                                    $jumlah = 0;
                                 @endphp
                                 @foreach ($pesantren->biayas as $biaya)
+                                    @php
+                                        $jumlah += $biaya->value;
+                                    @endphp
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $biaya->description }}</td>
-                                        <td>{{ $biaya->value }}</td>
+                                        <td>Rp {{ number_format($biaya->value, 2) }}</td>
                                         <td>
                                             <form action="{{ route('pesantren.biaya.delete') }}" method="post">
                                                 @csrf
@@ -161,6 +173,10 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                <tr>
+                                    <td colspan="2"><b>Jumlah</b></td>
+                                    <td colspan="2">Rp {{ number_format($jumlah, 2) }}</td>
+                                </tr>
                             </table>
                         </div>
                     </div>

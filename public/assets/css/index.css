@@ -18,6 +18,9 @@
     .content{
         margin-top: 130px !important;
     }
+    .card-pesantren{
+        width: 16rem;
+    }
 }
 
 @media only screen and (max-width: 600px) {

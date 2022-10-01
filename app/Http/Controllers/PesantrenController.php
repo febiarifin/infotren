@@ -9,6 +9,7 @@ use App\Models\Galeri;
 use App\Models\Jenjang;
 use App\Models\Konsentrasi;
 use App\Models\Pesantren;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -161,6 +162,7 @@ class PesantrenController extends Controller
             AppHelper::instance()->deleteImage($galeri->image);
         }
         $pesantren->galeris->each->delete();
+        $pesantren->biayas->each->delete();
         $pesantren->delete();
         toast('Pesantren berhasil dihapus', 'success');
         return back();
@@ -193,13 +195,18 @@ class PesantrenController extends Controller
 
     public function biayaImport(Request $request)
     {
-        $pesantren = Pesantren::findOrFail($request->id);
-        $request->validate([
-            'biaya' => ['required', 'mimes:xlsx, csv'],
-        ]);
-        Excel::import(new BiayasImport($pesantren->id), $request->file('biaya'));
-        toast('Import rincian biaya berhasil', 'success');
-        return back();
+        try {
+            $pesantren = Pesantren::findOrFail($request->id);
+            $request->validate([
+                'biaya' => ['required', 'mimes:xlsx, csv'],
+            ]);
+            Excel::import(new BiayasImport($pesantren->id), $request->file('biaya'));
+            toast('Import rincian biaya berhasil', 'success');
+            return back();
+        } catch (Exception $e) {
+            toast('Import rincian biaya gagal', 'error');
+            return back();
+        }
     }
 
     public function biayaDelete(Request $request)

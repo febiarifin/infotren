@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\KonsentrasiCotroller;
 use App\Http\Controllers\LoginController;
@@ -11,13 +12,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Index
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/pesantren/detail/{pesantren}', [HomeController::class, 'detail'])->name('pesantren.detail');
+Route::post('pesantren/search', [HomeController::class, 'search'])->name('pesantren.search');
+Route::get('/pesantren/filter/{test}', [HomeController::class, 'test'])->name('pesantren.test');
+Route::get('/pesantren/konsentrasi/{konsentrasi}', [HomeController::class, 'pesantrenByKonsentrasi'])->name('pesantren.konsentrasi');
+Route::get('/pesantren/jenjang/{jenjang}', [HomeController::class, 'pesantrenByJenjang'])->name('pesantren.jenjang');
 
 // Login
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'authenticate'])->name('login');
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
