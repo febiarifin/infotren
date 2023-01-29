@@ -47,7 +47,7 @@
 			<!--/.gallery-header-->
 			<div class="packages-content">
 				<div class="row">
-					<div class="col-md-8 col-sm-6">
+					<div class="col-md-8 col-sm-12">
 						<div class="single-package-item">
 							<div class="single-package-item-txt">
 								<h3>{{ $pesantren->nama }}</h3>
