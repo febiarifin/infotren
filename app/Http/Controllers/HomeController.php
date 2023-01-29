@@ -35,9 +35,18 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $pesantrens = Pesantren::where('nama', 'LIKE', '%' . $request->keyword . '%')->get();
+        if ($request->keyword) {
+            $pesantrens = Pesantren::where('nama', 'LIKE', '%' . $request->keyword . '%')->get();
+        }elseif($request->jenjang){
+            $jenjang = Jenjang::where('slug', $request->jenjang)->first();
+            $pesantrens = $jenjang->pesantrens;
+        }elseif($request->konsentrasi){
+            $konsentrasi = Konsentrasi::where('slug', $request->konsentrasi)->first();
+            $pesantrens = $konsentrasi->pesantrens;
+        }
         $kosentrasis = Konsentrasi::all();
         $jenjangs = Jenjang::all();
+
         return view('pages.home.search', [
             'title' => 'Kata Kunci : ' . $request->keyword,
             'pesantrens' => $pesantrens,

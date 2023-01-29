@@ -1,92 +1,203 @@
 @extends('layouts.home')
 
 @section('content')
-    <!-- Header -->
-    <div class="container p-5">
-        <h1 class="text-header text-primary" id="typing-text"></h1>
-        <p class="text-secondary fs-5 mt-5 text-description">
-            Sistem Informasi Pondok Pesantren (INFOTREN) adalah sebuah
-            website yang menyediakan informasi mengenai pondok pesantren,
-            informasi meliputi indentitas lengkap pondok pesantren, alamat
-            pondok pesantren, jarak pondok pesantren dari kampus Universitas
-            Sains Al-Qur'an, biaya pendidikan pondok pesantren, konsentrasi
-            pondok pesantren, jenjang pondok pesantren.
-        </p>
-        <a href="#content" class="btn btn-outline-primary rounded-pill mt-5 btn-search shadow"><i class="bi bi-search"></i>
-            Temukan Pesantren</a>
-    </div>
+    <!--about-us start -->
+	<section id="home" class="about-us">
+		<div class="container">
+			<div class="about-us-content">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="single-about-us">
+							<div class="about-us-txt">
+								<h2>Infotren (Sistem Informasi Pondok Pesantren)</h2>
+								<div class="about-btn">
+									<button class="about-view" onclick="location.href = '#search-box'">cari pesantren</button>
+								</div>
+								<!--/.about-btn-->
+							</div>
+							<!--/.about-us-txt-->
+						</div>
+						<!--/.single-about-us-->
+					</div>
+					<!--/.col-->
+					<div class="col-sm-0">
+						<div class="single-about-us"></div>
+						<!--/.single-about-us-->
+					</div>
+					<!--/.col-->
+				</div>
+				<!--/.row-->
+			</div>
+			<!--/.about-us-content-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/.about-us-->
+	<!--about-us end -->
 
-    <!-- Content -->
-    <div class="container mt-5 content" id="content">
-        <div class="row">
-            <!-- Navigation FIlter -->
-            @include('partials.navigation')
+	<!--travel-box start-->
+	<section class="travel-box" id="search-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="single-travel-boxes">
+						<div id="desc-tabs" class="desc-tabs">
 
-            <!-- Pesantren List -->
-            <div class="col-md-9 content-pesantren">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <div class="mt-3">
-                            <form action="{{ route('pesantren.search') }}" method="post">
-                                @csrf
-                                <input type="search" name="keyword" class="form-control rounded-pill shadow"
-                                    placeholder="Masukkan kata kunci pencarian..." />
-                            </form>
-                        </div>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active fade in" id="tours">
+									<div class="tab-para">
+										<div class="row">
 
-                        <div class="mt-5">
-                            <div class="row list-pesantrens">
+											<form action="{{ route('pesantren.search') }}" method="post">
+                                                @csrf
+												<div class="col-lg-2 col-md-2 col-sm-12">
+													<div class="single-tab-select-box">
+														<h2>konsentrasi</h2>
 
-                                @foreach ($pesantrens as $pesantren)
-                                    <!-- Pesantren Card -->
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card card-pesantren">
-                                            <img src="{{ asset('assets/img/thumbnail.png') }}" class="card-img-top"
-                                                alt="Thumbnail" height="220" />
-                                            <div class="card-body text-center">
-                                                <small class="card-title fw-bolder">
-                                                    {{ $pesantren->nama }}
-                                                </small>
-                                                <p class="card-text text-secondary">
-                                                    <small><b>Pengasuh</b> <br />
-                                                        {{ $pesantren->pengasuh }}</small>
-                                                    <br>
-                                                    <small> <b>Jarak</b> <br />
-                                                        <i class="bi bi-plus-slash-minus"></i>
-                                                        @if ($pesantren->jarak >= 1000)
-                                                            {{ $pesantren->jarak / 1000 }} km
-                                                        @else
-                                                            {{ $pesantren->jarak }} m
-                                                        @endif
-                                                    </small>
-                                                    <br>
-                                                    <small> <b>Penerimaan</b> <br />
-                                                        @if ($pesantren->pa_pi == 'pa_pi')
-                                                            Putra / Putri
-                                                        @elseif ($pesantren->pa_pi == 'pa')
-                                                            Putra
-                                                        @elseif ($pesantren->pa_pi == 'pi')
-                                                            Putri
-                                                        @endif
-                                                    </small>
-                                                </p>
-                                                <a href="{{ route('pesantren.detail', ['pesantren' => $pesantren->slug]) }}"
-                                                    class="btn btn-outline-primary btn-sm col-md-12">Detail
-                                                    <i class="bi bi-chevron-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+														<div class="travel-select-icon">
+															<select class="form-control" name="konsentrasi">
+																<option value="default">
+																	pilih konsentrasi
+																</option>
+																<!-- /.option-->
+                                                                @foreach ($konsentrasis as $konsentrasi)
+                                                                <option value="{{ $konsentrasi->slug }}">{{ $konsentrasi->name }}</option>
+                                                                @endforeach
 
-                            </div>
-                        </div>
+															</select><!-- /.select-->
+														</div>
+													</div>
+													<!--/.single-tab-select-box-->
+												</div>
+												<!--/.col-->
 
-                        <div class="mt-3 d-flex justify-content-center">
-                            {!! $pesantrens->links() !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+												<div class="col-lg-2 col-md-2 col-sm-12">
+													<div class="single-tab-select-box">
+														<h2>jenjang</h2>
+
+														<div class="travel-select-icon">
+															<select class="form-control" name="jenjang">
+																<option value="default">
+																	pilih jenjang
+																</option>
+																<!-- /.option-->
+
+																@foreach ($jenjangs as $jenjang)
+                                                                <option value="{{ $jenjang->slug }}">{{ $jenjang->name }}</option>
+                                                                @endforeach
+
+															</select><!-- /.select-->
+														</div>
+													</div>
+													<!--/.single-tab-select-box-->
+												</div>
+												<!--/.col-->
+
+												<div class="col-lg-5 col-md-3 col-sm-4">
+													<div class="single-tab-select-box">
+														<h2>Kata Kunci pencarian</h2>
+														<div>
+															<input type="text" name="keyword" class="form-control"
+																placeholder="kata kunci pencarian"
+																style="padding: 22px 20px; margin: 8px 0;" />
+														</div>
+														<!-- /.travel-check-icon -->
+													</div>
+													<!--/.single-tab-select-box-->
+												</div>
+												<!--/.col-->
+
+												<div class="col-lg-3 col-md-2 col-sm-3">
+													<div class="about-btn travel-mrt-0 pull-right">
+														<button class="about-view travel-btn" type="submit"
+															style="margin-top: 22px;">cari</button><!--/.travel-btn-->
+													</div>
+													<!--/.about-btn-->
+												</div>
+											</form>
+											<!--/.row-->
+										</div>
+										<!--/.tab-para-->
+									</div>
+									<!--/.tabpannel-->
+
+								</div>
+								<!--/.tab content-->
+							</div>
+							<!--/.desc-tabs-->
+						</div>
+						<!--/.single-travel-box-->
+					</div>
+					<!--/.col-->
+				</div>
+				<!--/.row-->
+			</div>
+			<!--/.container-->
+	</section>
+	<!--/.travel-box-->
+	<!--travel-box end-->
+
+	<!--packages start-->
+	<section id="pack" class="packages">
+		<div class="container">
+			<div class="gallary-header text-center">
+				<h2>Pondok Pesantren</h2>
+				<p>
+					Daftar Pondok Pensatren
+				</p>
+			</div>
+			<!--/.gallery-header-->
+			<div class="packages-content">
+				<div class="row">
+
+                    @foreach ($pesantrens as $pesantren)
+                    <div class="col-md-4 col-sm-6">
+						<div class="single-package-item">
+							<img src="{{ asset($pesantren->image) }}" />
+							<div class="single-package-item-txt">
+								<h3>{{ $pesantren->nama }}</h3>
+								<div class="packages-para">
+									<p>
+										<span>
+											<i class="fa fa-angle-right"></i> Pengasuh
+										</span>
+										<b>{{$pesantren->pengasuh}}</b>
+									</p>
+									<p>
+										<span>
+											<i class="fa fa-angle-right"></i> Peneriamaan
+										</span>
+										<b>
+                                            @if ($pesantren->pa_pi == 'pa_pi')
+                                                PA/PI
+                                            @elseif($pesantren->pa_pi == 'pa')
+                                                PA
+                                            @elseif($pesantren->pa_pi == 'pi')
+                                                PI
+                                            @endif
+                                        </b>
+									</p>
+								</div>
+								<div class="about-btn">
+									<a class="my-btn" href="{{ route('pesantren.detail', $pesantren->slug) }}">Detail</a>
+								</div>
+								<!--/.about-btn-->
+							</div>
+							<!--/.single-package-item-txt-->
+						</div>
+						<!--/.single-package-item-->
+					</div>
+                    @endforeach
+
+				</div>
+				<!--/.row-->
+			</div>
+			<!--/.packages-content-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/.packages-->
+	<!--packages end-->
+
 @endsection

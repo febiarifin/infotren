@@ -1,256 +1,250 @@
 @extends('layouts.home')
 
 @section('content')
-    <!-- Content -->
-    <div class="container-fluid mt-5 mb-5" id="content">
-        <div class="row">
-            <div class="col-md-12 text-center mb-4">
-                <h3>{{ $pesantren->nama }}</h3>
-                <span class="fs-6 text-secondary">{{ $pesantren->alamat }}</span>
-            </div>
-            <div class="col-md-8 mb-3">
-                <div class="card shadow mb-3">
-                    <img src="{{ asset($pesantren->image) }}" alt="" class="fluid">
-                    <div class="mt-3 p-3 text-justify">
-                        {!! nl2br($pesantren->content) !!}
-                    </div>
-                </div>
 
-                @if (count($pesantren->galeris) != 0)
-                    <div class="card shadow">
-                        <div class="card-header">Galeri Pesantren</div>
-                        <div class="card-body">
-                            <div class="row">
-                                @foreach ($pesantren->galeris as $galeri)
-                                    <div class="col-md-4">
-                                        <img src="{{ asset($galeri->image) }}" alt="{{ $galeri->description }}"
-                                            class="img-thumbnail">
+
+	<!--about-us start -->
+	<section id="home" class="about-us" style="background-image: url({{asset($pesantren->image)}});">
+		<div class="container">
+			<div class="about-us-content">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="single-about-us">
+							<div class="about-us-txt">
+								<h3 class="my-text-title">{{ $pesantren->nama }}</h3>
+								<div class="about-btn">
+									<button class="about-view" onclick="location.href = '#detail'">Detail</button>
+								</div>
+								<!--/.about-btn-->
+							</div>
+							<!--/.about-us-txt-->
+						</div>
+						<!--/.single-about-us-->
+					</div>
+					<div class="col-sm-0">
+						<div class="single-about-us"></div>
+						<!--/.single-about-us-->
+					</div>
+				</div>
+
+			</div>
+			<!--/.about-us-content-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/.about-us-->
+	<!--about-us end -->
+
+	<!--packages start-->
+	<section id="detail" class="packages">
+		<div class="container">
+			<div class="gallary-header text-center">
+				<h2>{{ $pesantren->nama }}</h2>
+				<p>
+					{{ $pesantren->alamat }}
+				</p>
+			</div>
+			<!--/.gallery-header-->
+			<div class="packages-content">
+				<div class="row">
+					<div class="col-md-8 col-sm-6">
+						<div class="single-package-item">
+							<div class="single-package-item-txt">
+								<h3>{{ $pesantren->nama }}</h3>
+								<div class="packages-para">
+                                    <div style="color: #727272 !important; text-align:justify">
+                                        {!! nl2br($pesantren->content) !!}
+
+                                        <br><br>
+
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <p>Konsentrasi</p>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="my-badge-box">
+
+                                                    @foreach ($pesantren->konsentrasis as $konsentrasi)
+                                                    <small class="my-badge">{{ $konsentrasi->name }}</small>
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <p>Jenjang</p>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="my-badge-box">
+                                                    @foreach ($pesantren->jenjangs as $jenjang)
+                                                    <small class="my-badge">{{ $jenjang->name }}</small>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
+								</div>
+							</div>
+						</div>
 
-            </div>
+                        <div class="single-package-item">
+							<div class="single-package-item-txt">
+								<div class="packages-para">
+                                    <iframe src="{{ $pesantren->maps_url }}" class="my-maps-box" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+								</div>
+							</div>
+						</div>
 
-            <div class="col-md-4 mb-3">
-                <!-- Identitas Pesantren -->
-                <div class="card shadow mb-3">
-                    <div class="card-header">Identitas Pesantren</div>
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Nama Pesantren</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->nama }}</small>
-                            </div>
-                        </div>
+                        <div class="single-package-item">
+							<div class="single-package-item-txt">
+								<h3>Galeri</h3>
+								<div class="packages-para">
+                                    <div class="row">
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Pengasuh</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->pengasuh }}</small>
-                            </div>
-                        </div>
+                                        @foreach ($pesantren->galeris as $galeri)
+                                        <div class="col-md-3">
+                                            <img src="{{ asset($galeri->image) }}" alt="package-place" class="my-image-box"/>
+                                        </div>
+                                        @endforeach
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Alamat</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->alamat }}</small>
-                            </div>
-                        </div>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Jarak</small>
-                            </div>
-                            <div class="col-8">
-                                <small>
-                                    @if ($pesantren->jarak >= 1000)
-                                        {{ $pesantren->jarak / 1000 }} km
-                                    @else
-                                        {{ $pesantren->jarak }} m
-                                    @endif
-                                </small>
-                            </div>
-                        </div>
+					<div class="col-md-4 col-sm-6">
+						<div class="single-package-item">
+							<div class="single-package-item-txt">
+								<h3>Indentitas Pesantren</h3>
+								<div class="packages-para">
+									<p>
+										<span>
+										Nama Pesantren
+										</span>
+										<b>{{ $pesantren->nama }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Konsentrasi</small>
-                            </div>
-                            <div class="col-8">
-                                @foreach ($pesantren->konsentrasis as $konsentrasi)
-                                    <small><input type="checkbox" checked disabled> {{ $konsentrasi->name }}</small><br>
-                                @endforeach
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Pengasuh
+										</span>
+										<b>{{ $pesantren->pengasuh }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Jenjang</small>
-                            </div>
-                            <div class="col-8">
-                                @foreach ($pesantren->jenjangs as $jenjang)
-                                    <span class="badge bg-primary">{{ $jenjang->name }}</span>
-                                @endforeach
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Alamat
+										</span>
+										<b>{{ $pesantren->alamat }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Kontak</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->kontak }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Kontak
+										</span>
+										<b>{{ $pesantren->kontak }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>PA/PI</small>
-                            </div>
-                            <div class="col-8">
-                                <small>
-                                    @if ($pesantren->pa_pi == 'pa_pi')
-                                        Putra / Putri
-                                    @elseif ($pesantren->pa_pi == 'pa')
-                                        Putra
-                                    @elseif ($pesantren->pa_pi == 'pi')
-                                        Putri
-                                    @endif
-                                </small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										PA/PI
+										</span>
+										<b>{{ $pesantren->pa_pi }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Lurah PA</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->lurah_pa }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Lurah PA
+										</span>
+										<b>{{ $pesantren->lurah_pa }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Lurah PI</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->lurah_pi }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Lurah PI
+										</span>
+										<b>{{ $pesantren->lurah_pi }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Jumlah Santri PA</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->jumlah_santri_pa }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Santri PA
+										</span>
+										<b>{{ $pesantren->jumlah_santri_pa }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Jumlah Santri PI</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->jumlah_santri_pi }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Santri PI
+										</span>
+										<b>{{ $pesantren->jumlah_santri_pi }}</b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Instagram</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->instagram }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Instagram
+										</span>
+										<b><a href="https://instagram.com/{{ $pesantren->instagram }}" target="_blank">{{ $pesantren->instagram }}</a></b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Facebook</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->facebook }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Facebook
+										</span>
+										<b><a href="https://facebook.com/{{ $pesantren->facebook }}" target="_blank">{{ $pesantren->facebook }}</a></b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Youtube</small>
-                            </div>
-                            <div class="col-8">
-                                <small>{{ $pesantren->youtube }}</small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										YouTube
+										</span>
+										<b><a href="https://youtube.com/{{ $pesantren->youtube }}" target="_blank">{{ $pesantren->youtube }}</a></b>
+									</p>
 
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <small>Website</small>
-                            </div>
-                            <div class="col-8">
-                                <small>
-                                    @if ($pesantren->website != null)
-                                        <a href="{{ $pesantren->website }}" class="text-decoration-none"
-                                            target="_blank">{{ $pesantren->nama }}</a>
-                                    @else
-                                        -
-                                    @endif
-                                </small>
-                            </div>
-                        </div>
+                                    <p>
+										<span>
+										Website
+										</span>
+										<b><a href="{{ $pesantren->website }}" target="_blank">{{ $pesantren->website }}</a></b>
+									</p>
+								</div>
 
-                    </div>
-                </div>
+								<!--/.about-btn-->
+							</div>
+							<!--/.single-package-item-txt-->
+						</div>
 
-                @if (count($pesantren->biayas) != 0)
-                    <div class="card shadow mb-3">
-                        <div class="card-header">Biaya Pendidikan</div>
-                        <div class="card-body">
-                            <table class="table">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Keterangan</th>
-                                    <th>Nominal</th>
-                                </tr>
-                                @php
-                                    $no = 1;
-                                    $jumlah = 0;
-                                @endphp
-                                @foreach ($pesantren->biayas as $biaya)
-                                    @php
-                                        $jumlah += $biaya->value;
-                                    @endphp
-                                    <tr>
-                                        <td><small>{{ $no++ }}</small></td>
-                                        <td><small>{{ $biaya->description }}</small></td>
-                                        <td><small>Rp {{ number_format($biaya->value, 2) }}</small></td>
-                                    </tr>
-                                @endforeach
-                                <tr>
-                                    <td colspan="2"><small><b>Jumlah</b></small></td>
-                                    <td><small><b>Rp {{ number_format($jumlah, 2) }}</b></small></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                @endif
+                        <div class="single-package-item">
+							<div class="single-package-item-txt">
+								<h3>Biaya Pendidikan</h3>
+								<div class="packages-para">
+									@foreach ($pesantren->biayas as $biaya)
+                                    <p>
+										<span>
+										{{ $biaya->description }}
+										</span>
+										<b>{{ $biaya->value }}</b>
+									</p>
+                                    @endforeach
+								</div>
 
-                <!-- Maps -->
-                <div class="card shadow">
-                    <iframe src="{!! nl2br($pesantren->maps_url) !!}" width="428" height="400" style="border:0;" class="card-maps"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
+								<!--/.about-btn-->
+							</div>
+							<!--/.single-package-item-txt-->
+						</div>
+						<!--/.single-package-item-->
+					</div>
+				</div>
 
-    </div>
+			</div>
+			<!--/.packages-content-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/.packages-->
+	<!--packages end-->
+
 @endsection
