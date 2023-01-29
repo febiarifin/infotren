@@ -27,6 +27,13 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <iframe src="{!! $pesantren->maps_url !!}" class="box-maps" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-5">
@@ -182,6 +189,9 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">Galeri</div>
                     <div class="box-body p-2">
@@ -189,32 +199,30 @@
                             data-target="#modal-galeri">
                             <i class="fa fa-plus"></i> Tambahkan Galeri
                         </button>
-                        <div>
+                        <div class="row">
                             @foreach ($pesantren->galeris as $galeri)
-                                <img src="{{ asset($galeri->image) }}" alt="Galeri {{ $pesantren->nama }}"
-                                    class="image-square">
-                                <div onclick="confirmDelete()">
-                                    <form action="{{ route('pesantren.galeri.delete') }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $galeri->id }}">
-                                        <button type="submit" class="btn btn-danger btn-sm col-md-12 mb-1 show_confirm"
-                                            data-toggle="tooltip" title='Delete'><i class="fa fa-trash"></i> Hapus
-                                            Galeri</button>
-                                    </form>
+                                <div class="col-md-3">
+                                    <img src="{{ asset($galeri->image) }}" alt="Galeri {{ $pesantren->nama }}"
+                                        class="image-square">
+                                    <div onclick="confirmDelete()">
+                                        <form action="{{ route('pesantren.galeri.delete') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $galeri->id }}">
+                                            <button type="submit"
+                                                class="btn btn-danger btn-sm col-md-12 mb-1 show_confirm"
+                                                data-toggle="tooltip" title='Delete'><i class="fa fa-trash"></i> Hapus
+                                                Galeri</button>
+                                        </form>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-
-                <div class="box">
-                    <div class="box-body">
-                        <iframe src="{!! $pesantren->maps_url !!}" class="box-maps" style="border:0;" allowfullscreen=""
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
             </div>
         </div>
+
+
     </section>
 
     {{-- Modal Add Galeri --}}
