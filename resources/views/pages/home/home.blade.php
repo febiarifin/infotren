@@ -154,7 +154,8 @@
                     @foreach ($pesantrens as $pesantren)
                     <div class="col-md-4 col-sm-6">
 						<div class="single-package-item">
-							<img src="{{ asset($pesantren->image) }}"/>
+							{{-- <img src="{{ asset($pesantren->image) }}"/> --}}
+							<img src="{{ asset('infotren-fe/assets/images/home/1.jpg') }}"/>
 							<div class="single-package-item-txt">
 								<h3>{{ $pesantren->nama }}</h3>
 								<div class="packages-para">
