@@ -889,8 +889,7 @@ body {
   padding: 0 25px;
 }
 .single-package-item img {
-  /* width: 100%; */
-  height: 250px;
+  width: 100%;
 }
 .single-package-item h3 {
   position: relative;
@@ -912,7 +911,6 @@ body {
 .packages-para {
   padding: 17px 0 0;
   text-transform: capitalize;
-  min-height: 100px;
 }
 .packages-para p {
   font-size: 14px;

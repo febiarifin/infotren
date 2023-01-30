@@ -152,7 +152,15 @@
 										<span>
 										PA/PI
 										</span>
-										<b>{{ $pesantren->pa_pi }}</b>
+										<b>
+                                            @if ($pesantren->pa_pi == 'pa_pi')
+                                            PA/PI
+                                            @elseif($pesantren->pa_pi == 'pa')
+                                                PA
+                                            @elseif($pesantren->pa_pi == 'pi')
+                                                PI
+                                            @endif
+                                        </b>
 									</p>
 
                                     <p>
