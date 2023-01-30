@@ -157,7 +157,7 @@
 							{{-- <img src="{{ asset($pesantren->image) }}"/> --}}
 							<img src="{{ asset('infotren-fe/assets/images/home/1.jpg') }}"/>
 							<div class="single-package-item-txt">
-								<h3>{{ $pesantren->nama }}</h3>
+								<h3>{{ Str::substr($pesantren->nama, 0, 25) }}..</h3>
 								<div class="packages-para">
 									<p>
 										<span>
