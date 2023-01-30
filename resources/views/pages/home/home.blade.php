@@ -163,7 +163,7 @@
 										<span>
 											<i class="fa fa-angle-right"></i> Pengasuh
 										</span>
-										<b>{{$pesantren->pengasuh}}</b>
+										<b>{{ Str::substr($pesantren->pengasuh,0,15)}}..</b>
 									</p>
 									<p>
 										<span>
