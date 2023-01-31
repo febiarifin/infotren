@@ -92,7 +92,7 @@
                         <div class="single-package-item">
 							<div class="single-package-item-txt">
 								<div class="packages-para">
-                                    <iframe src="{{ $pesantren->maps_url }}" class="my-maps-box" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe src="{!! $pesantren->maps_url !!}" class="my-maps-box" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div>
 							</div>
 						</div>
