@@ -97,6 +97,7 @@
                             </div>
                         </div>
 
+                        @if (count($pesantren->galeris) != 0)
                         <div class="single-package-item">
                             <div class="single-package-item-txt">
                                 <h3>Galeri</h3>
@@ -114,6 +115,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <div class="single-package-item">
                             <div class="single-package-item-txt">
