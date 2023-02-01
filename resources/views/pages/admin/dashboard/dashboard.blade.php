@@ -41,8 +41,8 @@
                             <li>Pencarian berdasarkan konsentrasi pesantren</li>
                             <li>Pencarian berdasarkan jenjang pesantren</li>
                         </ul>
-                        <a href="#" class="btn btn-primary btn-sm mt-2" target="_blank"><i class="fa fa-download"></i>
-                            Proposal</a>
+                        {{-- <a href="#" class="btn btn-primary btn-sm mt-2" target="_blank"><i class="fa fa-download"></i>
+                            Proposal</a> --}}
                     </div>
                 </div>
             </div>
