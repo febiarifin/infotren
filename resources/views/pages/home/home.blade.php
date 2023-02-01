@@ -9,7 +9,7 @@
 					<div class="col-sm-12">
 						<div class="single-about-us">
 							<div class="about-us-txt">
-								<h2>Infotren (Sistem Informasi Pondok Pesantren)</h2>
+								<h2><span style="color: #5dad7c; text-shadow:0px 1px 1px #000">Infotren</span> <br><span style="color:#fff;font-size: 35pt">Sistem Informasi Pondok Pesantren</span></h2>
 								<div class="about-btn">
 									<button class="about-view" onclick="location.href = '#search-box'">cari pesantren</button>
 								</div>
