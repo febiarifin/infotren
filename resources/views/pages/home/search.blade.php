@@ -9,9 +9,13 @@
                 <div class="col-sm-12">
                     <div class="single-about-us">
                         <div class="about-us-txt">
-                            <h2>Infotren (Sistem Informasi Pondok Pesantren)</h2>
+                            <img class="my-logo-box" src="{{ asset('infotren-fe/assets/logo/logo-new-fix.png') }}" alt="Logo Infotren" height="50">
+                            <br><br>
+                            <p class="my-text-header">Informasi Pondok Pesantren</p>
+                            <br>
+                            <p>Sistem informasi pondok pesantren terbaik, <br> untuk pribadi yang lebih baik.</p>
                             <div class="about-btn">
-                                <button class="about-view" onclick="location.href = '#search-box'">cari pesantren</button>
+                                <button class="book-btn" style="border-radius:50px !important;" onclick="location.href = '#search-box'">cari pesantren</button>
                             </div>
                             <!--/.about-btn-->
                         </div>
