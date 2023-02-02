@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-2">
                     <div class="logo">
-                        <a href="{{ route('home') }}"><img src="{{ asset('infotren-fe/assets/logo/logo-fix.png') }}" alt="Infotren"> </a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('infotren-fe/assets/logo/logo-new.png') }}" alt="Infotren"> </a>
                     </div>
                     <!-- /.logo-->
                 </div>

@@ -8,10 +8,14 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="single-about-us">
-							<div class="about-us-txt">
-								<h2><span style="color: #5dad7c; text-shadow:0px 0.5px 0.5px #fff">INFOTREN</span> <br><span style="color:#fff;font-size: 32pt">Sistem Informasi Pondok Pesantren</span></h2>
+                            <div class="about-us-txt">
+                                <img class="my-logo-box" src="{{ asset('infotren-fe/assets/logo/logo-new-fix.png') }}" alt="Logo Infotren" height="50">
+                                <br><br>
+                                <p class="my-text-header">Informasi Pondok Pesantren</p>
+                                <br>
+                                <p>Sistem informasi pondok pesantren terbaik, <br> untuk pribadi yang lebih baik.</p>
 								<div class="about-btn">
-									<button class="about-view" onclick="location.href = '#search-box'">cari pesantren</button>
+									<button class="book-btn" style="border-radius:50px !important;" onclick="location.href = '#search-box'">cari pesantren</button>
 								</div>
 								<!--/.about-btn-->
 							</div>
@@ -155,7 +159,7 @@
                     <div class="col-md-4 col-sm-6">
 						<div class="single-package-item">
 							{{-- <img src="{{ asset($pesantren->image) }}"/> --}}
-							<img src="{{ asset('infotren-fe/assets/images/home/1.jpg') }}"/>
+							<img src="{{ asset('infotren-fe/assets/images/home/thumbnail.jpg') }}"/>
 							<div class="single-package-item-txt">
 								<h3>{{ Str::substr($pesantren->nama, 0, 25) }}..</h3>
 								<div class="packages-para">

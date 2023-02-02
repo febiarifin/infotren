@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $pesantrens = Pesantren::orderBy('created_at', 'desc')->paginate(6);
+        $pesantrens = Pesantren::orderBy('created_at', 'desc')->paginate(9);
         $kosentrasis = Konsentrasi::all();
         $jenjangs = Jenjang::all();
         return view('pages.home.home', [
