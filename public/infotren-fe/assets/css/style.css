@@ -302,7 +302,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: url(../../assets/images/home/bg-fix.jpg) no-repeat;
+    background: url(../../assets/images/home/bg-3.jpg) no-repeat;
     /* background-color: #fff; */
     background-size: cover;
     background-position: center;
@@ -1622,6 +1622,10 @@ body {
     font-size: 18pt;
     /* font-weight: bold; */
     color: #025859 !important;
+}
+
+.my-logo-box-header{
+    height: 30px !important;
 }
 
 @media (min-width: 320px) {
